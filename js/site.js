@@ -19,9 +19,15 @@ if(ls('tt-lang')==='ar')setLang('ar');
 function setOn(p,on){p.classList.toggle('on',on);p.setAttribute('aria-pressed',on?'true':'false')}
 $$('.plate').forEach(function(p){p.addEventListener('click',function(){setOn(p,!p.classList.contains('on'))})});
 /* on touch screens the plate turns into the photo by itself as it scrolls through the middle of the screen */
-if(matchMedia('(hover: none)').matches&&'IntersectionObserver' in window&&!reduce){
- var mid=new IntersectionObserver(function(es){es.forEach(function(x){setOn(x.target,x.isIntersecting)})},{rootMargin:'-40% 0px -40% 0px'});
- $$('.plate').forEach(function(p){mid.observe(p)})}
+if(matchMedia('(hover: none)').matches&&!reduce){
+ var plates=$$('.plate'),raf=0,lastOn=[];
+ var focusPlates=function(){raf=0;var vh=innerHeight,mid=vh/2,top=64,bot=vh-70,info=[];
+  plates.forEach(function(p){var r=p.getBoundingClientRect();if(r.bottom<top||r.top>bot){info.push(null);return}var c=r.top+r.height/2;info.push(Math.abs(c-mid))});
+  var best=Infinity;info.forEach(function(d){if(d!==null&&d<best)best=d});
+  plates.forEach(function(p,i){var d=info[i],was=p.classList.contains('on');var on=d!==null&&best<vh*.22&&d<=best+48&&d<(was?vh*.27:vh*.2);if(on!==was&&!p.hasAttribute('data-m'))setOn(p,on)})};
+ var kick=function(){if(!raf)raf=requestAnimationFrame(focusPlates)};
+ window.addEventListener('scroll',kick,{passive:true});window.addEventListener('resize',kick);setTimeout(kick,300);
+ plates.forEach(function(p){p.addEventListener('click',function(){p.setAttribute('data-m','1');clearTimeout(p._t);p._t=setTimeout(function(){p.removeAttribute('data-m')},2500)})})}
 /* entrances: parts of each section rise in turn, once */
 var rv=$$('.tile,.mh,.info-grid>div,.dish,.pz,.rows li');
 rv.forEach(function(el,i){el.classList.add('rv');el.style.setProperty('--d',((i%4)*0.08)+'s')});
