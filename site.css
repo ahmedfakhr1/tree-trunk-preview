@@ -249,3 +249,7 @@ input[aria-invalid=true]{outline:3px solid #F2B8A5}
 .hdr--over:not(.solid) .lang i{color:#C9B79B}
 .hdr--over:not(.solid) .hdr-cta{background:var(--amber);color:#1B120C}
 @media(hover:hover) and (pointer:fine){.hdr--over:not(.solid) .hdr-cta:hover{background:#F2CE96}}
+
+.hdr-menu{display:none;min-height:44px;padding:0 16px;font-size:15px}
+@media(max-width:980px){.hdr-menu{display:inline-flex}.hdr--over:not(.solid) .hdr-menu{background:var(--amber);color:#1B120C}}
+@media(max-width:360px){.hdr-r{gap:8px}.hdr-menu{padding:0 12px}.lang{padding:0 12px}.logo img{height:42px}}
