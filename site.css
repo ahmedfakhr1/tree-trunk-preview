@@ -240,3 +240,12 @@ input[aria-invalid=true]{outline:3px solid #F2B8A5}
  .phero-in{padding-block:36px calc(34vw + 24px)}
  .visit-page .phero-in{padding-bottom:calc(30vw + 24px)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
+
+.hdr.hdr--over{background:transparent}
+.hdr.hdr--over.solid{background:var(--paper)}
+.hdr--over:not(.solid) .nav a,.hdr--over:not(.solid) .burger{color:var(--cream)}
+.hdr--over:not(.solid) .nav a[aria-current]{color:var(--amber)}
+.hdr--over:not(.solid) .lang{background:#2B1A0F;color:var(--cream)}
+.hdr--over:not(.solid) .lang i{color:#C9B79B}
+.hdr--over:not(.solid) .hdr-cta{background:var(--amber);color:#1B120C}
+@media(hover:hover) and (pointer:fine){.hdr--over:not(.solid) .hdr-cta:hover{background:#F2CE96}}
