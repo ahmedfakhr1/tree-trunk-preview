@@ -13,12 +13,12 @@ d.addEventListener('keydown',function(e){if(e.key==='Escape')setDrawer(false)});
 /* language */
 function setLang(l){var ar=l==='ar';d.documentElement.lang=l;d.documentElement.dir=ar?'rtl':'ltr';
  $$('[data-ar]').forEach(function(el){if(el.getAttribute('data-en')===null)el.setAttribute('data-en',el.textContent);el.textContent=ar?el.getAttribute('data-ar'):el.getAttribute('data-en')});ls('tt-lang',l);d.dispatchEvent(new CustomEvent('tt-lang'))}
-/* Arabic is held back until a native speaker has reviewed it: the button explains instead of switching */
+/* Preview only: Arabic ships with the production site, so the button explains instead of switching */
 (function(){var b=$('#lang'),pop=null,t=0;
  function hide(){if(pop){pop.classList.remove('on');var p=pop;pop=null;setTimeout(function(){p.remove()},200)}clearTimeout(t);b.setAttribute('aria-expanded','false')}
  function show(){if(pop){hide();return}
   pop=d.createElement('div');pop.className='langpop';pop.setAttribute('role','status');
-  pop.innerHTML='<b>Arabic is coming soon</b><span>We are having it reviewed by a native speaker first.</span>';
+  pop.innerHTML='<b>Arabic is not in this preview</b><span>It will be live in the final version of the site.</span>';
   d.body.appendChild(pop);var r=b.getBoundingClientRect(),w=pop.offsetWidth,x=Math.min(Math.max(12,r.right-w),innerWidth-w-12);
   pop.style.left=x+'px';pop.style.top=(r.bottom+10)+'px';pop.style.setProperty('--ax',(r.left+r.width/2-x)+'px');
   requestAnimationFrame(function(){pop&&pop.classList.add('on')});b.setAttribute('aria-expanded','true');t=setTimeout(hide,4000)}
