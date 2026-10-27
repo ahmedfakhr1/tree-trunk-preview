@@ -57,7 +57,6 @@ h3{font:600 17px/1.3 "Hanken Grotesk",sans-serif}
 .wall-grid{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 8px}
 .tile{position:relative;aspect-ratio:1;background:var(--bg);display:grid;place-items:center;overflow:hidden}
 .tile-in{width:66%;margin-bottom:6%}
-.tile .pho{width:70%;aspect-ratio:1;object-fit:cover;border-radius:50%;margin-bottom:6%}
 .tc{position:absolute;inset:auto 12px 16px;text-align:center;font:600 15px/1.2 "Hanken Grotesk",sans-serif}
 .tile--dk{color:var(--paper)}
 .tile--h{display:flex;align-items:center;justify-content:flex-start;padding:clamp(16px,3vw,40px)}
@@ -70,7 +69,14 @@ h3{font:600 17px/1.3 "Hanken Grotesk",sans-serif}
 .disc{position:absolute;inset:0;border-radius:50%;background:var(--c);transition:background .3s ease}
 .obj{position:absolute;left:50%;top:44%;width:84%;transform:translate(-50%,-50%);opacity:0;pointer-events:none;transition:opacity .3s ease}
 .obj.on{opacity:1;pointer-events:auto}
-.obj img{width:100%}
+.obj .sk{width:100%;transition:opacity .35s ease,transform .6s var(--ease)}
+.obj .ph{position:absolute;left:50%;top:50%;width:92%;aspect-ratio:1;object-fit:cover;border-radius:50%;transform:translate(-50%,-50%) scale(.94);opacity:0;transition:opacity .35s ease,transform .6s var(--ease)}
+.stage.asked .obj.on .sk{opacity:0;transform:scale(1.04)}
+.stage.asked .obj.on .ph{opacity:1;transform:translate(-50%,-50%)}
+.stage.asked .hot{opacity:0;pointer-events:none}
+@media(hover:hover) and (pointer:fine){.stage:hover .obj.on:not(.annot) .sk{opacity:0;transform:scale(1.04)}.stage:hover .obj.on:not(.annot) .ph{opacity:1;transform:translate(-50%,-50%)}}
+.flip{position:absolute;inset:auto auto -108px 50%;transform:translateX(-50%);background:var(--paper2);border:0;border-radius:999px;min-height:44px;padding:0 22px;font:600 15px "Hanken Grotesk";color:var(--ink);cursor:pointer;white-space:nowrap}
+.flip[aria-pressed=true]{background:var(--teal);color:#fff}
 .hot{position:absolute;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--ink);border:3px solid var(--paper);cursor:pointer;padding:0;transition:transform .2s var(--ease),background .2s}
 .hot::after{content:"";position:absolute;inset:-12px}
 .hot.on,.hot:hover,.hot:focus-visible{background:var(--teal);transform:scale(1.25)}
@@ -117,13 +123,12 @@ input[aria-invalid=true]{outline:3px solid #F2B8A5}
 .coupon .fine{color:var(--paper);text-align:center}
 /* footer: the mark, built large */
 .foot{background:var(--deep);color:var(--paper);padding:clamp(56px,7vw,96px) 0 32px}
-.foot .mark{display:flex;flex-wrap:nowrap;gap:4px;align-items:flex-end;height:clamp(150px,24vw,360px);margin-bottom:56px}
-.bk{height:var(--h);background:var(--c);color:#143637;display:grid;place-items:end center;font:600 clamp(70px,11.5vw,180px)/.78 Caveat,"El Messiri",cursive;text-transform:uppercase;overflow:hidden;min-width:0}
-.foot .bk-gap{flex:.45 1 0;margin:0}
+.foot-top{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:64px}
+.foot-logo{width:clamp(180px,26vw,380px);height:auto}
+.foot-tag{font:600 19px "Hanken Grotesk",sans-serif;max-width:20ch;text-align:end}
 .foot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
 .foot h3{font:600 15px "Hanken Grotesk";color:#B7CFCB;margin-bottom:12px}
 .foot a,.foot p{display:block;color:var(--paper);text-decoration:none;margin-bottom:8px;font-size:15px}
-.foot .tag{font:600 19px "Hanken Grotesk",sans-serif;margin-top:12px}
 .credit{margin-top:56px;color:#B7CFCB;font-size:15px}
 /* inner page headers */
 .phero{position:relative;margin-top:var(--h);min-height:clamp(300px,34vw,440px);overflow:hidden;background:var(--paper)}
@@ -133,14 +138,15 @@ input[aria-invalid=true]{outline:3px solid #F2B8A5}
 .phero h1{font-size:var(--d2)}
 .phero .sub{margin:16px 0 22px}
 .chipbar{position:sticky;top:var(--h);z-index:30;background:var(--paper)}
-.chipbar-in{display:flex;gap:16px;align-items:center;padding-block:12px}
+.chipbar-in{display:flex;gap:16px;align-items:center;padding-block:10px}
+.searchrow{padding-top:8px}.searchrow .search input{width:min(100%,420px)}
 .chiprow{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;flex:1}
 .chiprow .chip{flex:none;white-space:nowrap;background:var(--paper2);color:var(--ink)}
 .chiprow .chip.on{background:var(--teal);color:#fff}
 .search input{width:240px;min-height:44px;border-radius:999px;background:var(--paper2);color:var(--ink)}
 .search input::placeholder{color:var(--muted)}
 .mpage{padding-bottom:clamp(72px,9vw,150px)}
-.msec{scroll-margin-top:calc(var(--h) + 70px)}
+.msec{scroll-margin-top:calc(var(--h) + 76px)}
 .mh{display:flex;justify-content:space-between;align-items:baseline;padding:clamp(72px,9vw,140px) 0 28px}
 .mh h2{font-size:var(--d2)}
 .cnt{font:600 15px "Hanken Grotesk";color:var(--muted)}
@@ -186,9 +192,9 @@ input[aria-invalid=true]{outline:3px solid #F2B8A5}
  .coupon-r::before,.coupon-r::after{top:-16px;bottom:auto}.coupon-r::before{inset-inline-start:-16px}.coupon-r::after{inset-inline-start:auto;inset-inline-end:-16px}
  .info-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr}.msec ul{grid-template-columns:1fr}
  .show-grid{grid-template-columns:minmax(0,1fr);gap:28px;min-height:0}.show-l,.fact{min-width:0}
- .stage{grid-column:1;width:86vw;margin-bottom:44px}.show-l{grid-column:1;grid-row:2}.fact{grid-column:1;grid-row:3;padding:0;max-width:60ch}
+ .stage{grid-column:1;width:86vw;margin-bottom:128px}.show-l{grid-column:1;grid-row:2}.fact{grid-column:1;grid-row:3;padding:0;max-width:60ch}
  .picks{display:flex;gap:24px;overflow-x:auto;scrollbar-width:none}.pk{white-space:nowrap;font-size:30px}
- .wall-grid{grid-template-columns:repeat(2,1fr);gap:6px;padding:0 6px}.tile-in,.tile .pho{width:80%}.tile-in{margin-bottom:15%}.tile .pho{margin-bottom:15%}}
+ .wall-grid{grid-template-columns:repeat(2,1fr);gap:6px;padding:0 6px}.tile-in{width:80%;margin-bottom:15%}}
 @media(max-width:768px){:root{--h:64px}
  body{padding-bottom:64px}
  .tabbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;inset:auto 0 0;z-index:48;background:var(--paper2);padding-bottom:env(safe-area-inset-bottom)}
@@ -204,12 +210,9 @@ input[aria-invalid=true]{outline:3px solid #F2B8A5}
  @keyframes enter{from{transform:translateY(40vw)}to{transform:none}}
  .tc{font-size:14px}
  .coupon-l,.coupon-r{padding:28px 22px}
- .foot .mark{flex-wrap:wrap;height:auto;gap:4px}
- .foot .mark .bk{flex:1 1 calc(40% - 4px)!important;height:calc(var(--h) * 1.7);font-size:26vw}
- .foot .mark .bk-gap{flex:0 0 100%;height:0}
+  .foot-top{flex-direction:column;align-items:flex-start}.foot-tag{text-align:start}
  .foot-grid{grid-template-columns:1fr}
- .chipbar{position:static}.chipbar-in{flex-direction:column;align-items:stretch;gap:8px}.chiprow{width:100%}.search input{width:100%}
- .chiprow{position:sticky;top:var(--h);background:var(--paper);z-index:30;padding-block:8px}
+
  .dish{grid-template-columns:64px 1fr;gap:16px}
  .phero{min-height:auto}
  .visit-page .info{padding-top:112px}

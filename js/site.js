@@ -14,7 +14,12 @@ function setLang(l){var ar=l==='ar';d.documentElement.lang=l;d.documentElement.d
 $('#lang').addEventListener('click',function(){setLang(d.documentElement.lang==='ar'?'en':'ar')});
 if(ls('tt-lang')==='ar')setLang('ar');
 /* plates: the drawing turns into the plate as served */
-$$('.plate').forEach(function(p){p.addEventListener('click',function(){var on=p.classList.toggle('on');p.setAttribute('aria-pressed',on?'true':'false')})});
+function setOn(p,on){p.classList.toggle('on',on);p.setAttribute('aria-pressed',on?'true':'false')}
+$$('.plate').forEach(function(p){p.addEventListener('click',function(){setOn(p,!p.classList.contains('on'))})});
+/* on touch screens the plate turns into the photo by itself as it scrolls through the middle of the screen */
+if(matchMedia('(hover: none)').matches&&'IntersectionObserver' in window&&!reduce){
+ var mid=new IntersectionObserver(function(es){es.forEach(function(x){setOn(x.target,x.isIntersecting)})},{rootMargin:'-40% 0px -40% 0px'});
+ $$('.plate').forEach(function(p){mid.observe(p)})}
 /* entrances: parts of each section rise in turn, once */
 var rv=$$('.tile,.mh,.info-grid>div,.dish,.pz,.rows li');
 rv.forEach(function(el,i){el.classList.add('rv');el.style.setProperty('--d',((i%4)*0.08)+'s')});
