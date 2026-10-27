@@ -259,3 +259,8 @@ input[aria-invalid=true]{outline:3px solid #F2B8A5}
 
 html,body{max-width:100%;overflow-x:hidden}
 main,.foot{overflow-x:clip}
+
+.langpop{position:fixed;z-index:80;max-width:260px;background:#E9BE82;color:#2B1A0F;border-radius:20px;padding:14px 18px;display:flex;flex-direction:column;gap:4px;font:400 14px/1.4 "Hanken Grotesk",sans-serif;opacity:0;transform:translateY(-6px) scale(.97);transform-origin:var(--ax,80%) 0;transition:opacity .18s,transform .18s}
+.langpop.on{opacity:1;transform:none}
+.langpop b{font:600 15px "Hanken Grotesk",sans-serif}
+@media(prefers-reduced-motion:reduce){.langpop{transition:none}}

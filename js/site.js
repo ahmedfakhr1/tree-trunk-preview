@@ -13,8 +13,20 @@ d.addEventListener('keydown',function(e){if(e.key==='Escape')setDrawer(false)});
 /* language */
 function setLang(l){var ar=l==='ar';d.documentElement.lang=l;d.documentElement.dir=ar?'rtl':'ltr';
  $$('[data-ar]').forEach(function(el){if(el.getAttribute('data-en')===null)el.setAttribute('data-en',el.textContent);el.textContent=ar?el.getAttribute('data-ar'):el.getAttribute('data-en')});ls('tt-lang',l);d.dispatchEvent(new CustomEvent('tt-lang'))}
-$('#lang').addEventListener('click',function(){setLang(d.documentElement.lang==='ar'?'en':'ar')});
-if(ls('tt-lang')==='ar')setLang('ar');
+/* Arabic is held back until a native speaker has reviewed it: the button explains instead of switching */
+(function(){var b=$('#lang'),pop=null,t=0;
+ function hide(){if(pop){pop.classList.remove('on');var p=pop;pop=null;setTimeout(function(){p.remove()},200)}clearTimeout(t);b.setAttribute('aria-expanded','false')}
+ function show(){if(pop){hide();return}
+  pop=d.createElement('div');pop.className='langpop';pop.setAttribute('role','status');
+  pop.innerHTML='<b>Arabic is coming soon</b><span>We are having it reviewed by a native speaker first.</span>';
+  d.body.appendChild(pop);var r=b.getBoundingClientRect(),w=pop.offsetWidth,x=Math.min(Math.max(12,r.right-w),innerWidth-w-12);
+  pop.style.left=x+'px';pop.style.top=(r.bottom+10)+'px';pop.style.setProperty('--ax',(r.left+r.width/2-x)+'px');
+  requestAnimationFrame(function(){pop&&pop.classList.add('on')});b.setAttribute('aria-expanded','true');t=setTimeout(hide,4000)}
+ b.addEventListener('click',function(e){e.stopPropagation();show()});
+ d.addEventListener('click',function(e){if(pop&&!pop.contains(e.target))hide()});
+ d.addEventListener('keydown',function(e){if(e.key==='Escape')hide()});
+ addEventListener('scroll',hide,{passive:true});
+ if(ls('tt-lang')==='ar')ls('tt-lang','en')})();
 /* plates: the drawing turns into the plate as served */
 function setOn(p,on){p.classList.toggle('on',on);p.setAttribute('aria-pressed',on?'true':'false')}
 $$('.plate').forEach(function(p){p.addEventListener('click',function(){setOn(p,!p.classList.contains('on'))})});
