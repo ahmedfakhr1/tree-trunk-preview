@@ -1,184 +1,221 @@
-:root{--paper:#F1EADA;--sky:#F9E1C9;--sea:#528D8B;--deep:#1E4748;--deeper:#173A3B;--brown:#4A2A18;--clay:#8E4F2B;--ink:#2A1D14;--mute:#66543F;--go:#2C6B6A;--go-d:#245957;--line:#D6C7A8;--card:#F8F2E4;--h:72px;--ease:cubic-bezier(.23,1,.32,1)}
+:root{--d2:clamp(52px,6.4vw,92px);--paper:#F1EADA;--paper2:#E8DEC6;--peach:#F4D2B4;--seal:#BFDAD6;--sand:#E3D2AE;--ink:#3B2314;--muted:#54402D;--teal:#2C6B6A;--teal-d:#1F5453;--tealm:#2F6F6D;--deep:#1B3F40;--m:clamp(16px,3.4vw,48px);--r:16px;--h:72px;--ease:cubic-bezier(.23,1,.32,1)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font:400 17px/1.6 "Hanken Grotesk",system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-.wrap{width:min(1200px,100% - 48px);margin-inline:auto}
+.wrap{width:calc(100% - 2*var(--m));max-width:1320px;margin-inline:auto}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.disp,h1,h2{font-family:Caveat,"El Messiri",cursive;font-weight:600;color:var(--brown);line-height:.95;text-wrap:balance}
-.disp{font-size:clamp(46px,6.4vw,84px)}
+.disp,h1,h2{font-family:Caveat,"El Messiri",cursive;font-weight:600;color:var(--ink);line-height:.92;text-wrap:balance}
+.disp{font-size:var(--d2)}
 h3{font:600 17px/1.3 "Hanken Grotesk",sans-serif}
-:focus-visible{outline:2px solid var(--go);outline-offset:3px}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;font:600 16px/1 "Hanken Grotesk",sans-serif;text-decoration:none;border:1.5px solid transparent;cursor:pointer;white-space:nowrap;transition:background .2s var(--ease),transform .15s var(--ease)}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 30px;border-radius:999px;font:600 17px/1 "Hanken Grotesk",sans-serif;text-decoration:none;border:0;cursor:pointer;white-space:nowrap;transition:background .2s var(--ease),transform .15s var(--ease)}
 .btn:active{transform:scale(.97)}
-.btn--go{background:var(--go);color:#fff}
-.btn--line{border-color:var(--go);color:var(--go);background:transparent}
-@media(hover:hover) and (pointer:fine){.btn--go:hover{background:var(--go-d)}.btn--line:hover{background:#2C6B6A14}}
+.btn--go{background:var(--teal);color:#fff}
+.btn--line{background:var(--paper2);color:var(--ink)}
+@media(hover:hover) and (pointer:fine){.btn--go:hover{background:var(--teal-d)}.btn--line:hover{background:var(--sand)}}
 /* header */
-.hdr{position:fixed;inset:0 0 auto;z-index:50;height:var(--h);display:flex;align-items:center;gap:32px;padding:0 max(24px,calc((100% - 1200px)/2));background:var(--paper);border-bottom:1px solid var(--line);transition:background .3s var(--ease),border-color .3s}
-.hdr--over{background:transparent;border-color:transparent}
-.hdr--over.solid{background:var(--paper);border-color:var(--line)}
+.hdr{position:fixed;inset:0 0 auto;z-index:50;height:var(--h);display:flex;align-items:center;gap:32px;padding:0 var(--m);background:var(--paper)}
 .logo img{height:54px;width:auto}
-.nav{display:flex;gap:30px;margin-inline-start:auto}
-.nav a{text-decoration:none;font-weight:600;font-size:15px;padding:6px 0;border-bottom:2px solid transparent}
-.nav a[aria-current]{border-color:var(--go)}
+.nav{display:flex;gap:32px;margin-inline-start:auto}
+.nav a{text-decoration:none;font-weight:600;font-size:15px;padding:6px 0;transition:color .2s}
+.nav a[aria-current]{color:var(--teal)}
 .hdr-r{display:flex;align-items:center;gap:12px}
-.hdr-cta{min-height:42px;padding:0 22px}
-.lang{background:none;border:1.5px solid var(--brown);color:var(--brown);border-radius:999px;height:42px;padding:0 14px;font:600 14px "Hanken Grotesk";cursor:pointer;display:flex;gap:6px;align-items:center}
-.lang i{font-style:normal;opacity:.5}.l-ar{font-family:"IBM Plex Sans Arabic",sans-serif}
-.burger{display:none;background:none;border:0;color:var(--brown);width:44px;height:44px;cursor:pointer}
-.drawer{position:fixed;inset:var(--h) 0 0;z-index:49;background:var(--paper);padding:32px 24px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s}
+.hdr-cta{min-height:44px;padding:0 24px}
+.lang{background:var(--paper2);border:0;color:var(--ink);border-radius:999px;height:44px;padding:0 16px;font:600 15px "Hanken Grotesk";cursor:pointer;display:flex;gap:6px;align-items:center}
+.lang i{font-style:normal;color:var(--muted)}.l-ar{font-family:"IBM Plex Sans Arabic",sans-serif}
+.burger{display:none;background:none;border:0;color:var(--ink);width:44px;height:44px;cursor:pointer}
+.drawer{position:fixed;inset:var(--h) 0 0;z-index:49;background:var(--paper);padding:32px var(--m);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s}
 .drawer.open{opacity:1;visibility:visible;transform:none}
-.drawer a{display:block;font:600 56px/1.2 Caveat,"El Messiri",cursive;color:var(--brown);text-decoration:none;padding:4px 0}
-.tabbar{display:none}
-/* hero: their cover scene, tide rolls in once */
-.hero{position:relative;min-height:max(100svh,700px);background:linear-gradient(#FAE4CF,#F6D6BA);overflow:hidden}
-.art{position:absolute;inset:0}
-.art img{width:100%;height:100%;object-fit:cover;object-position:62% 100%}
-.arrive .art{animation:tide 1.5s cubic-bezier(.45,0,.2,1) both}
-@keyframes tide{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
-.hero-in{position:relative;padding-top:calc(var(--h) + 4vh)}
-.hero h1{font-size:clamp(84px,12.5vw,190px);line-height:.82}
-.hero h1 span{display:inline-block}
-.tagline{font:600 clamp(30px,3.2vw,46px)/1.1 Caveat,"El Messiri",cursive;color:var(--go-d);margin:8px 0 14px}
-.hint{max-width:46ch;margin-bottom:22px}
-.badge{display:inline-block;margin-inline-start:6px;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600;background:#fff9;color:var(--go-d);border:1px solid var(--go)}
-.badge:empty{display:none}
-.cta{display:flex;flex-wrap:wrap;gap:12px}
-.arrive .hero-in>*{animation:ink .9s var(--ease) both}
-.arrive .hero-in>:nth-child(1){animation-delay:1.1s}.arrive .hero-in>:nth-child(2){animation-delay:1.25s}.arrive .hero-in>:nth-child(3){animation-delay:1.35s}.arrive .hero-in>:nth-child(4){animation-delay:1.45s}
-@keyframes ink{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-/* plates: sketch turns into the plate as served */
+.drawer a{display:block;font:600 64px/1.15 Caveat,"El Messiri",cursive;text-decoration:none;padding:4px 0}
+.tabbar{display:none;transition:transform .25s var(--ease)}.tabbar.off{transform:translateY(100%)}
+/* hero: the plate as one giant motif, cropped by the viewport */
+.hero{position:relative;min-height:100svh;overflow:hidden;background:var(--paper)}
+.disc-hero{position:absolute;width:120svh;height:120svh;left:78%;top:55%;margin:-60svh 0 0 -60svh;border-radius:50%;overflow:hidden;background:var(--seal);animation:enter 1.3s cubic-bezier(.3,.7,.2,1) both}
+.disc-hero img{width:100%;height:100%;object-fit:cover;object-position:62% 52%;animation:drift 30s ease-out both}
+@keyframes enter{from{transform:translateX(38vw)}to{transform:none}}
+@keyframes drift{from{transform:scale(1)}to{transform:scale(1.07)}}
+.hero-in{position:relative;min-height:100svh;display:flex;align-items:center;padding:var(--h) var(--m) 0 max(var(--m),8%)}
+.hero-t{max-width:min(46%,640px)}
+.hero h1{font-size:clamp(104px,14.5vw,236px);line-height:.8;letter-spacing:-.01em}
+.hero h1 span{display:block}
+.sub{font-size:19px;max-width:36ch;margin:28px 0 30px}
+.hero-t>*{animation:rise .9s var(--ease) both}
+.hero-t>:nth-child(2){animation-delay:.12s}.hero-t>:nth-child(3){animation-delay:.24s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+/* plates: the drawing turns into the plate as served */
 .plate{position:relative;display:block;width:100%;aspect-ratio:1;background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .plate img{position:absolute;inset:0;width:100%;height:100%;transition:opacity .35s ease,transform .6s var(--ease)}
 .plate .sk{object-fit:contain}
-.plate .ph{object-fit:cover;border-radius:50%;opacity:0;transform:scale(.94);outline:3px solid var(--paper);outline-offset:-3px}
+.plate .ph{object-fit:cover;border-radius:50%;opacity:0;transform:scale(.94)}
 .plate.on .sk,.plate:focus-visible .sk{opacity:0;transform:scale(1.05)}
 .plate.on .ph,.plate:focus-visible .ph{opacity:1;transform:none}
 @media(hover:hover) and (pointer:fine){.plate:hover .sk{opacity:0;transform:scale(1.05)}.plate:hover .ph{opacity:1;transform:none}}
-/* on the table */
-.table{padding:104px 0 88px}
-.lead{max-width:44ch;margin-top:14px;color:var(--mute)}
-.collage{display:grid;grid-template-columns:repeat(12,1fr);gap:28px 24px;margin-top:56px;align-items:start}
-.cell .sk{object-position:50% 100%}
-.cell figcaption{font:600 30px/1.1 Caveat,"El Messiri",cursive;color:var(--brown);margin-top:6px}
-.c1{grid-column:1/6;grid-row:1/3}.c2{grid-column:6/9;margin-top:36px}.c3{grid-column:9/13;margin-top:96px}
-.c4{grid-column:6/9;grid-row:2;margin-top:-4px}.c5{grid-column:9/12;grid-row:2;margin-top:-30px}
-.c6{grid-column:2/5;grid-row:3}.c7{grid-column:5/9;grid-row:3;margin-top:44px}.c8{grid-column:9/12;grid-row:3}
-.c1 figcaption{font-size:40px}
-/* annotated board */
-.board-sec{padding:72px 0 104px;background:#EBE1CC}
-.board-grid{display:grid;grid-template-columns:1fr 1.7fr;gap:48px;align-items:center}
-.board-t p{max-width:34ch;margin:16px 0 28px}
-.board svg{width:100%;height:auto;overflow:visible}
-.lab path{stroke:var(--sea);stroke-width:1.6;fill:none}
-.lab circle{fill:var(--clay)}
-.lab text{font:600 30px Caveat,"El Messiri",cursive;fill:var(--brown)}
-.lab{cursor:default;outline:none}.lab:focus-visible circle{stroke:var(--go);stroke-width:3px}.lab circle{transition:r .2s var(--ease),fill .2s}
-.board-cap{display:none}
-/* wave */
-.wave{position:relative;height:clamp(240px,32vw,420px);overflow:hidden;background:var(--sky);display:grid;place-items:center}
-.wave img{position:absolute;left:-10%;top:0;width:120%;height:100%;object-fit:cover;object-position:50% 70%;transform:translateX(var(--dx,0))}
-.wave p{position:relative;font-size:clamp(54px,9vw,128px);color:var(--brown);text-align:center;transform:translateY(-42%)}
-/* duo */
-.duo{padding:104px 0}
-.duo-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:72px;align-items:start}
-.duo h2{margin-bottom:28px;max-width:14ch}
-.pzrow{display:flex;margin-bottom:28px}
-.pz{flex:0 0 36%;margin-inline-end:-6%}
-.pzrow--2 .pz{flex-basis:44%;margin-inline-end:-4%}
-.pz:nth-child(2){margin-top:34px}.pz:nth-child(3){margin-top:-10px}
-.pz figcaption{font:600 26px/1.1 Caveat,"El Messiri",cursive;color:var(--brown);padding-inline-start:12%}
-/* reserve */
-.reserve{padding:104px 0;background:var(--deep);color:var(--paper)}
-.reserve h2{color:var(--paper);font-size:clamp(52px,6.4vw,88px);margin-bottom:16px}
-.reserve-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start}
-.reserve-copy p{max-width:38ch;margin-bottom:28px}
-.rows{list-style:none}
-.rows li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #FFFFFF33}
-.rows span{opacity:.8}.rows a,.rows b{font-weight:600}
-.card{background:var(--card);color:var(--ink);border-radius:16px;padding:32px}
-fieldset{border:0;margin-bottom:22px}
-legend{font:600 14px "Hanken Grotesk";color:var(--mute);margin-bottom:10px}
+/* wall of plates */
+.wall{padding:clamp(64px,8vw,120px) 0 0}
+.wall-grid{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 8px}
+.tile{position:relative;aspect-ratio:1;background:var(--bg);display:grid;place-items:center;overflow:hidden}
+.tile-in{width:66%;margin-bottom:6%}
+.tile .pho{width:70%;aspect-ratio:1;object-fit:cover;border-radius:50%;margin-bottom:6%}
+.tc{position:absolute;inset:auto 12px 16px;text-align:center;font:600 15px/1.2 "Hanken Grotesk",sans-serif}
+.tile--dk{color:var(--paper)}
+.tile--h{display:flex;align-items:center;justify-content:flex-start;padding:clamp(16px,3vw,40px)}
+.tile--h h2{font-size:var(--d2)}
+.wall-note{padding:28px 0 0;max-width:60ch;margin-inline:var(--m)}
+/* object on a disc */
+.show{padding:clamp(72px,8vw,120px) 0 clamp(40px,5vw,80px)}
+.show-grid{display:grid;grid-template-columns:34% 44% 22%;align-items:end}
+.stage{position:relative;grid-column:2;grid-row:1;aspect-ratio:1;width:min(64svh,100%);align-self:center;justify-self:center}
+.disc{position:absolute;inset:0;border-radius:50%;background:var(--c);transition:background .3s ease}
+.obj{position:absolute;left:50%;top:44%;width:84%;transform:translate(-50%,-50%);opacity:0;pointer-events:none;transition:opacity .3s ease}
+.obj.on{opacity:1;pointer-events:auto}
+.obj img{width:100%}
+.hot{position:absolute;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--ink);border:3px solid var(--paper);cursor:pointer;padding:0;transition:transform .2s var(--ease),background .2s}
+.hot::after{content:"";position:absolute;inset:-12px}
+.hot.on,.hot:hover,.hot:focus-visible{background:var(--teal);transform:scale(1.25)}
+.cap{position:absolute;inset:auto 0 -52px;text-align:center;font:600 42px/1 Caveat,"El Messiri",cursive;min-height:40px}
+.show-l{grid-column:1;grid-row:1;align-self:end;padding-bottom:6px}
+.show h2.small{font-size:clamp(28px,2.9vw,44px);line-height:1.15;color:var(--muted);margin-bottom:8px}
+.picks{list-style:none}
+.pk{background:none;border:0;padding:0;cursor:pointer;text-align:start;font:600 clamp(28px,2.9vw,44px)/1.15 Caveat,"El Messiri",cursive;color:var(--muted);transition:color .2s}
+.pk.on{color:var(--ink)}
+@media(hover:hover) and (pointer:fine){.pk:hover{color:var(--teal)}}
+.fact{grid-column:3;grid-row:1;align-self:center;padding-inline-start:24px;max-width:30ch}
+/* coupon */
+.reserve{padding:clamp(56px,7vw,110px) 0 clamp(72px,9vw,150px)}
+.coupon{position:relative;display:grid;grid-template-columns:46% 54%;background:var(--teal-d);color:var(--paper);border-radius:var(--r)}
+.coupon-l{padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.coupon h2{color:var(--paper);font-size:var(--d2);margin-bottom:18px}
+.coupon-l p{max-width:34ch}
+.lines{list-style:none;display:grid;gap:6px}.hrs{margin-top:20px;display:grid;gap:2px;color:var(--paper)}.hrs b{font-weight:600}
+.lines a{font-weight:600;text-decoration:none;font-size:17px}
+.coupon-r{position:relative;padding:clamp(28px,4vw,56px);border-inline-start:5px dotted var(--paper)}
+.coupon-r::before,.coupon-r::after{content:"";position:absolute;width:28px;height:28px;border-radius:50%;background:var(--paper);inset-inline-start:-16px}
+.coupon-r::before{top:-14px}.coupon-r::after{bottom:-14px}
+fieldset{border:0;margin-bottom:20px}
+legend{font:600 15px "Hanken Grotesk";margin-bottom:10px;color:var(--paper)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);font:600 15px "Hanken Grotesk";cursor:pointer;display:inline-flex;align-items:center;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
-.chip[aria-pressed=true]{background:var(--go);border-color:var(--go);color:#fff}
-.chip:disabled{color:#8F7F69;background:#EDE3CF;cursor:not-allowed;text-decoration:line-through}
-.stepper{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;background:#fff}
-.stepper button{width:48px;height:48px;border:0;background:none;font-size:22px;cursor:pointer;color:var(--go)}
+.chip{min-height:44px;padding:0 18px;border-radius:999px;border:0;background:var(--tealm);color:var(--paper);font:600 15px "Hanken Grotesk";cursor:pointer;display:inline-flex;align-items:center;text-decoration:none;transition:background .15s,color .15s}
+.chip[aria-pressed=true]{background:var(--paper);color:var(--ink)}
+.chip:disabled{background:var(--teal-d);color:#B9D6D2;cursor:not-allowed;text-decoration:line-through}
+.stepper{display:inline-flex;align-items:center;background:var(--tealm);border-radius:999px}
+.stepper button{width:48px;height:48px;border:0;background:none;font-size:19px;cursor:pointer;color:var(--paper)}
 .stepper output{min-width:48px;text-align:center;font-weight:600}
-label{display:block;font-weight:600;font-size:14px;margin:12px 0 6px}
-input{width:100%;min-height:48px;border:1.5px solid var(--line);border-radius:10px;padding:0 14px;font:400 16px "Hanken Grotesk";background:#fff;color:var(--ink)}
-input[aria-invalid=true]{border-color:#A33A2A}
-.err{color:#9B2F20;font-size:14px;margin-top:6px}
+label{display:block;font-weight:600;font-size:15px;margin:10px 0 6px}
+input{width:100%;min-height:52px;border:0;border-radius:var(--r);padding:0 16px;font:400 17px "Hanken Grotesk";background:var(--tealm);color:var(--paper)}
+input::placeholder{color:#D9CFBC}
+input[aria-invalid=true]{outline:3px solid #F2B8A5}
+.err{color:#FFD9CC;font-size:15px;margin-top:6px}
 .chips--occ{margin-top:14px}
-.summary{font:600 28px/1.15 Caveat,"El Messiri",cursive;color:var(--brown);margin:4px 0 16px;min-height:32px}
-.actions{display:flex;flex-wrap:wrap;gap:12px}
-.fine{font-size:14px;color:var(--mute);margin-top:12px}
-/* footer */
-.foot{background:var(--deeper);color:var(--paper);padding:72px 0 32px}
-.foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1.2fr 1fr;gap:40px}
-.foot-logo{width:120px;margin-bottom:10px}
-.foot .tag{font:600 32px Caveat,"El Messiri",cursive;color:#9CCFCB}
-.foot h3{font:600 14px "Hanken Grotesk";opacity:.7;margin-bottom:12px}
-.foot a,.foot p{display:block;color:var(--paper);text-decoration:none;margin-bottom:6px;font-size:15px}
-.credit{text-align:center;opacity:.65;font-size:14px;margin-top:48px}
-/* menu page */
-.mhero{position:relative;margin-top:var(--h);height:clamp(260px,32vw,400px);overflow:hidden;background:var(--sky)}
-.mhero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 80%}
-.mhero-in{position:relative;padding-top:28px}
-.mhero h1{font-size:clamp(68px,10vw,140px);line-height:.85}
-.note{margin:0;padding-top:20px;max-width:60ch;color:var(--mute)}
-.visit-page .mhero{height:auto;min-height:clamp(480px,46vw,620px)}.visit-page .note{color:var(--ink);padding-top:8px;margin-bottom:18px}
-.chipbar{position:sticky;top:var(--h);z-index:30;background:var(--paper);border-bottom:1px solid var(--line)}
-.chipbar-in{display:flex;gap:16px;align-items:center;padding-block:10px}
+.summary{font:600 30px/1.1 Caveat,"El Messiri",cursive;margin:4px 0 16px;min-height:34px}
+.bar{display:flex;align-items:center;justify-content:center;min-height:56px;border-radius:var(--r);background:#1B120C;color:var(--paper);font:600 17px "Hanken Grotesk";text-decoration:none;transition:background .2s,transform .15s var(--ease)}
+.bar:active{transform:scale(.98)}
+@media(hover:hover) and (pointer:fine){.bar:hover{background:#2E1F15}}
+.linkbtn{display:block;margin:14px auto 0;background:none;border:0;color:var(--paper);font:600 15px "Hanken Grotesk";text-decoration:underline;cursor:pointer;min-height:44px}
+.fine{font-size:16px;color:var(--muted);margin-top:12px}
+.coupon .fine{color:var(--paper);text-align:center}
+/* footer: the mark, built large */
+.foot{background:var(--deep);color:var(--paper);padding:clamp(56px,7vw,96px) 0 32px}
+.foot .mark{display:flex;flex-wrap:nowrap;gap:4px;align-items:flex-end;height:clamp(150px,24vw,360px);margin-bottom:56px}
+.bk{height:var(--h);background:var(--c);color:#143637;display:grid;place-items:end center;font:600 clamp(70px,11.5vw,180px)/.78 Caveat,"El Messiri",cursive;text-transform:uppercase;overflow:hidden;min-width:0}
+.foot .bk-gap{flex:.45 1 0;margin:0}
+.foot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.foot h3{font:600 15px "Hanken Grotesk";color:#B7CFCB;margin-bottom:12px}
+.foot a,.foot p{display:block;color:var(--paper);text-decoration:none;margin-bottom:8px;font-size:15px}
+.foot .tag{font:600 19px "Hanken Grotesk",sans-serif;margin-top:12px}
+.credit{margin-top:56px;color:#B7CFCB;font-size:15px}
+/* inner page headers */
+.phero{position:relative;margin-top:var(--h);min-height:clamp(300px,34vw,440px);overflow:hidden;background:var(--paper)}
+.disc-sm{position:absolute;width:min(30vw,400px);aspect-ratio:1;left:78%;top:50%;transform:translate(-50%,-50%);border-radius:50%;overflow:hidden}
+.disc-sm img{width:100%;height:100%;object-fit:cover;object-position:62% 52%}
+.phero-in{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;min-height:inherit;padding-block:40px}
+.phero h1{font-size:var(--d2)}
+.phero .sub{margin:16px 0 22px}
+.chipbar{position:sticky;top:var(--h);z-index:30;background:var(--paper)}
+.chipbar-in{display:flex;gap:16px;align-items:center;padding-block:12px}
 .chiprow{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;flex:1}
-.chiprow .chip{flex:none;white-space:nowrap}
-.chiprow .chip.on{background:var(--go);border-color:var(--go);color:#fff}
-.search input{width:230px;min-height:44px;border-radius:999px}
-.mpage{padding-block:24px 104px}
-.msec{padding-top:56px;scroll-margin-top:calc(var(--h) + 60px)}
-.msec .wl{display:block;width:140px;height:12px;color:var(--sea);margin:4px 0 22px}
-.msec ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:18px 64px}
-.dish{display:grid;grid-template-columns:128px 1fr auto;gap:18px;align-items:center}
-.dish--plain{grid-template-columns:1fr auto;padding:8px 0}
-.dt h3{font:600 32px/1.05 Caveat,"El Messiri",cursive;color:var(--brown)}
-.dt small{display:block;margin-top:4px;color:var(--mute);font-size:15px;line-height:1.45;max-width:36ch}
-.pr{justify-self:end;font-weight:600;white-space:nowrap;border-bottom:2px solid var(--clay);padding-bottom:1px}
-.pr::before{content:"EGP ";font-size:12px;font-weight:400;color:var(--mute)}
-.num{margin-inline-start:.45em}
-.empty{text-align:center;color:var(--mute);padding-top:48px}
+.chiprow .chip{flex:none;white-space:nowrap;background:var(--paper2);color:var(--ink)}
+.chiprow .chip.on{background:var(--teal);color:#fff}
+.search input{width:240px;min-height:44px;border-radius:999px;background:var(--paper2);color:var(--ink)}
+.search input::placeholder{color:var(--muted)}
+.mpage{padding-bottom:clamp(72px,9vw,150px)}
+.msec{scroll-margin-top:calc(var(--h) + 70px)}
+.mh{display:flex;justify-content:space-between;align-items:baseline;padding:clamp(72px,9vw,140px) 0 28px}
+.mh h2{font-size:var(--d2)}
+.cnt{font:600 15px "Hanken Grotesk";color:var(--muted)}
+.msec ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:36px 64px}
+.dish{display:grid;grid-template-columns:72px 1fr;gap:20px;align-items:center}
+.dish--plain{grid-template-columns:1fr}
+.dt{display:grid;grid-template-columns:1fr auto;gap:2px 16px;align-items:baseline}
+.dt h3{font-size:17px}
+.pr{font-weight:600;white-space:nowrap}
+.dt small{grid-column:1/-1;color:var(--muted);font-size:16px;line-height:1.5;max-width:38ch}
+.empty{text-align:center;color:var(--muted);padding-top:48px}
+/* single-item sections sit as a feature row */
+.msec ul:has(>li:only-child){grid-template-columns:1fr}
+.msec ul>li:only-child{grid-template-columns:1fr minmax(120px,240px);gap:32px}
+.msec ul>li:only-child .plate{order:2}
+.msec ul>li:only-child .dt h3{font-size:19px}
 /* visit */
-.info{padding:88px 0}
-.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px}
-.info h2{font-size:56px;margin-bottom:16px}
-.info p{margin-bottom:16px}
-.rows--plain li{border-color:var(--line)}
-.rows--plain span{opacity:1;color:var(--mute)}
-.mapcard{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border:1.5px solid var(--go);border-radius:999px;text-decoration:none;font-weight:600;color:var(--go);max-width:340px}
+.trio{padding:clamp(72px,8vw,120px) 0 0}
+.trio-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--m);margin-top:32px}
+.trio .pz figcaption{margin-top:12px;font-weight:600;text-align:center}
+.info .btn{width:100%}
+.phero .disc-sm{animation:enter-sm 1.1s cubic-bezier(.3,.7,.2,1) both}
+.phero-in>*{animation:rise .9s var(--ease) both}.phero-in>:nth-child(2){animation-delay:.12s}.phero-in>:nth-child(3){animation-delay:.24s}
+@keyframes enter-sm{from{opacity:0;transform:translate(-30%,-50%)}to{opacity:1;transform:translate(-50%,-50%)}}
+.info{padding:clamp(64px,8vw,120px) 0 0}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(32px,5vw,72px)}
+.info h2{font-size:var(--d2);margin-bottom:20px}
+.rows{list-style:none}
+.rows li{display:flex;justify-content:space-between;gap:16px;padding:12px 0}
+.rows span{color:var(--muted)}.rows a,.rows b{font-weight:600}
+.addr{margin-bottom:20px;font-size:19px}
+/* entrances */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease) var(--d,0s),transform .8s var(--ease) var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
 /* rtl */
 [dir=rtl] body{font-family:"IBM Plex Sans Arabic","Hanken Grotesk",sans-serif}
-[dir=rtl] .hint,[dir=rtl] .lead,[dir=rtl] .note{line-height:1.8}
-[dir=rtl] .pr::before{content:"ج.م "}
+[dir=rtl] .sub,[dir=rtl] .fact,[dir=rtl] .wall-note{line-height:1.8}
 [dir=rtl] .hero h1{font-family:Caveat,cursive}
-/* responsive */
+[dir=rtl] .pr{unicode-bidi:plaintext}
+/* tablet and phone */
 @media(max-width:980px){.nav,.hdr-cta{display:none}.burger{display:block}.hdr{gap:12px}.logo{margin-inline-end:auto}
- .board-grid,.duo-grid,.reserve-grid{grid-template-columns:1fr;gap:40px}.info-grid{grid-template-columns:1fr;gap:40px}.foot-grid{grid-template-columns:1fr 1fr}
- .msec ul{grid-template-columns:1fr}}
+ .coupon{grid-template-columns:1fr}.coupon-r{border-inline-start:0;border-top:5px dotted var(--paper)}
+ .coupon-r::before,.coupon-r::after{top:-16px;bottom:auto}.coupon-r::before{inset-inline-start:-16px}.coupon-r::after{inset-inline-start:auto;inset-inline-end:-16px}
+ .info-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr}.msec ul{grid-template-columns:1fr}
+ .show-grid{grid-template-columns:minmax(0,1fr);gap:28px;min-height:0}.show-l,.fact{min-width:0}
+ .stage{grid-column:1;width:86vw;margin-bottom:44px}.show-l{grid-column:1;grid-row:2}.fact{grid-column:1;grid-row:3;padding:0;max-width:60ch}
+ .picks{display:flex;gap:24px;overflow-x:auto;scrollbar-width:none}.pk{white-space:nowrap;font-size:30px}
+ .wall-grid{grid-template-columns:repeat(2,1fr);gap:6px;padding:0 6px}.tile-in,.tile .pho{width:80%}.tile-in{margin-bottom:15%}.tile .pho{margin-bottom:15%}}
 @media(max-width:768px){:root{--h:64px}
  body{padding-bottom:64px}
- .tabbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;inset:auto 0 0;z-index:48;background:var(--paper);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
- .tabbar a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0;min-height:56px;color:var(--brown);text-decoration:none;font-size:13px;font-weight:600}
+ .tabbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;inset:auto 0 0;z-index:48;background:var(--paper2);padding-bottom:env(safe-area-inset-bottom)}
+ .tabbar a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0;min-height:56px;text-decoration:none;font-size:14px;font-weight:600}
  .logo img{height:46px}
- .hero h1 span{display:block}.hero h1{font-size:clamp(84px,27vw,120px)}
- .art img{object-position:66% 100%}
- .table{padding:64px 0 56px}.board-sec{padding:56px 0 64px}.duo,.reserve{padding:64px 0}
- .collage{grid-template-columns:1fr 1fr;gap:20px 16px}
- .collage .cell{grid-column:auto!important;grid-row:auto!important;margin-top:0!important}.collage .c1{grid-column:1/3!important}
- .board svg{margin-inline:-8px}.lab path,.lab text{display:none}.lab{cursor:pointer}.lab circle{r:9px;stroke:var(--paper);stroke-width:3px}.lab.on circle{r:13px;fill:var(--go)}.board-cap{display:block;text-align:center;font:600 38px/1.1 Caveat,"El Messiri",cursive;color:var(--brown);min-height:44px;margin-top:6px}
- .dish{grid-template-columns:96px 1fr auto;gap:14px}.dish--plain{grid-template-columns:1fr auto}
- .card{padding:22px}.info{padding:56px 0}.foot-grid{grid-template-columns:1fr}
- .chipbar-in{flex-direction:column;align-items:stretch;gap:8px}.chiprow{width:100%}.search input{width:100%}
- .pz{flex-basis:34%}.pzrow--2 .pz{flex-basis:46%}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.wave img{transform:none}}
+ .hero{min-height:max(100svh,720px)}
+ .disc-hero{width:130vw;height:130vw;left:50%;top:calc(max(100svh,720px)*.58);margin:0 0 0 -65vw}
+ .hero-in{align-items:flex-start;padding:calc(var(--h) + 28px) var(--m) 0}
+ .hero-t{max-width:none}
+ .disc-hero img{height:150%;margin-top:-64%;object-position:62% 100%}
+ .hero h1{font-size:clamp(92px,28vw,150px)}
+ .sub{margin:20px 0 22px}
+ @keyframes enter{from{transform:translateY(40vw)}to{transform:none}}
+ .tc{font-size:14px}
+ .coupon-l,.coupon-r{padding:28px 22px}
+ .foot .mark{flex-wrap:wrap;height:auto;gap:4px}
+ .foot .mark .bk{flex:1 1 calc(40% - 4px)!important;height:calc(var(--h) * 1.7);font-size:26vw}
+ .foot .mark .bk-gap{flex:0 0 100%;height:0}
+ .foot-grid{grid-template-columns:1fr}
+ .chipbar{position:static}.chipbar-in{flex-direction:column;align-items:stretch;gap:8px}.chiprow{width:100%}.search input{width:100%}
+ .chiprow{position:sticky;top:var(--h);background:var(--paper);z-index:30;padding-block:8px}
+ .dish{grid-template-columns:64px 1fr;gap:16px}
+ .phero{min-height:auto}
+ .visit-page .info{padding-top:112px}
+ .disc-sm{width:88vw;left:50%;top:auto;bottom:-52vw;transform:translateX(-50%);animation:none!important}
+ .trio-row{grid-template-columns:1fr;max-width:340px;margin-inline:auto}
+ .msec ul>li:only-child{grid-template-columns:1fr 96px;gap:16px}
+ .phero-in{padding-block:36px calc(34vw + 24px)}
+ .visit-page .phero-in{padding-bottom:calc(30vw + 24px)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
