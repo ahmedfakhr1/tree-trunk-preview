@@ -75,10 +75,11 @@ h3{font:600 17px/1.3 "Hanken Grotesk",sans-serif}
 .lab path{stroke:var(--sea);stroke-width:1.6;fill:none}
 .lab circle{fill:var(--clay)}
 .lab text{font:600 30px Caveat,"El Messiri",cursive;fill:var(--brown)}
-.board-list{display:none;list-style:none;grid-template-columns:1fr 1fr;gap:2px 16px;margin-top:12px;font:600 26px Caveat,"El Messiri",cursive;color:var(--brown)}
+.lab{cursor:default;outline:none}.lab:focus-visible circle{stroke:var(--go);stroke-width:3px}.lab circle{transition:r .2s var(--ease),fill .2s}
+.board-cap{display:none}
 /* wave */
 .wave{position:relative;height:clamp(240px,32vw,420px);overflow:hidden;background:var(--sky);display:grid;place-items:center}
-.wave img{position:absolute;left:-6%;top:0;width:112%;height:100%;object-fit:cover;object-position:50% 70%;transform:translateX(var(--dx,0))}
+.wave img{position:absolute;left:-10%;top:0;width:120%;height:100%;object-fit:cover;object-position:50% 70%;transform:translateX(var(--dx,0))}
 .wave p{position:relative;font-size:clamp(54px,9vw,128px);color:var(--brown);text-align:center;transform:translateY(-42%)}
 /* duo */
 .duo{padding:104px 0}
@@ -175,7 +176,7 @@ input[aria-invalid=true]{border-color:#A33A2A}
  .table{padding:64px 0 56px}.board-sec{padding:56px 0 64px}.duo,.reserve{padding:64px 0}
  .collage{grid-template-columns:1fr 1fr;gap:20px 16px}
  .collage .cell{grid-column:auto!important;grid-row:auto!important;margin-top:0!important}.collage .c1{grid-column:1/3!important}
- .lab{display:none}.board-list{display:grid}
+ .board svg{margin-inline:-8px}.lab path,.lab text{display:none}.lab{cursor:pointer}.lab circle{r:9px;stroke:var(--paper);stroke-width:3px}.lab.on circle{r:13px;fill:var(--go)}.board-cap{display:block;text-align:center;font:600 38px/1.1 Caveat,"El Messiri",cursive;color:var(--brown);min-height:44px;margin-top:6px}
  .dish{grid-template-columns:96px 1fr auto;gap:14px}.dish--plain{grid-template-columns:1fr auto}
  .card{padding:22px}.info{padding:56px 0}.foot-grid{grid-template-columns:1fr}
  .chipbar-in{flex-direction:column;align-items:stretch;gap:8px}.chiprow{width:100%}.search input{width:100%}
