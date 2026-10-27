@@ -204,7 +204,7 @@ input[aria-invalid=true]{outline:3px solid #F2B8A5}
 /* tablet and phone */
 @media(max-width:980px){
  .place-h{grid-template-columns:1fr}.place-h p{justify-self:start}
- .circles{grid-template-columns:repeat(2,1fr);gap:16px}.ci1,.ci2,.ci3,.ci4,.ci5{grid-column:auto;margin-top:0}.ci1{grid-column:1/3}.ci5{grid-column:1/3}.nav,.hdr-cta{display:none}.burger{display:block}.hdr{gap:12px}.logo{margin-inline-end:auto}
+ .circles{grid-template-columns:repeat(2,1fr);gap:16px}.ci1,.ci2,.ci3,.ci4,.ci5{grid-column:auto;margin-top:0}.ci1{grid-column:1/3}.nav,.hdr-cta{display:none}.burger{display:block}.hdr{gap:12px}.logo{margin-inline-end:auto}
  .coupon{grid-template-columns:1fr}.coupon-r{border-inline-start:0;border-top:5px dotted var(--paper)}
  .coupon-r::before,.coupon-r::after{top:-16px;bottom:auto}.coupon-r::before{inset-inline-start:-16px}.coupon-r::after{inset-inline-start:auto;inset-inline-end:-16px}
  .info-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr}.msec ul{grid-template-columns:1fr}
@@ -256,3 +256,6 @@ input[aria-invalid=true]{outline:3px solid #F2B8A5}
 
 .plate img,.obj .ph,.obj .sk{will-change:opacity,transform;-webkit-backface-visibility:hidden;backface-visibility:hidden}
 .plate .ph,.obj .ph{transition-duration:.45s}
+
+html,body{max-width:100%;overflow-x:hidden}
+main,.foot{overflow-x:clip}
